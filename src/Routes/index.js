@@ -12,6 +12,7 @@ import Conversation from '../Components/Employers/Conversation';
 import Jobs from '../Components/Employers/Job';
 import Onboarding from '../Components/Employers/Onboarding'
 import Profile from '../Components/Employers/Profile';
+import Register from '../Components/Register';
 const Navigation = () => {
 
     const CandidatProtectedRoutes = () =>{
@@ -37,6 +38,8 @@ const Navigation = () => {
                 <Route path="/" element={<LandingPage />} />
                 <Route path="employer/auth" element={<AuthPage />} />
                 <Route path="candidate/auth" element={<AuthPage />} />
+                <Route path="/auth" element={<AuthPage />} />
+                <Route path="/register" element={<Register />} />
 
                 {/* Candidate Routes start */}
                 <Route element={<CandidatProtectedRoutes/>}>

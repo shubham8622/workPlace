@@ -23,7 +23,7 @@ const Navbar = () => {
               <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li>
             </ul>
             <div className="login-buttons">
-              <Link to="/login" className="nav-links" >Login</Link>
+              <Link to="/auth" className="nav-links" >Login</Link>
               <Link to="/register" className="nav-links register">Register Now</Link>
             </div>
             <div className="bars" id="bars" onClick={handleMobileNav}>

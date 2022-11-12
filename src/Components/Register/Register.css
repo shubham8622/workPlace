@@ -1,0 +1,84 @@
+section.register-form-section {
+    padding: 12rem 0;
+}
+.page-heading h1 {
+    text-align: center;
+    font-size: 3rem;
+    padding: 0 0 3rem 0;
+}
+.inputs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 6rem;
+    flex-wrap: wrap;
+}
+
+.form-box {
+    max-width: 65rem;
+    margin-inline: auto;
+    padding: 4rem;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgb(0 0 0 / 25%);
+    border-radius: 20px;
+}
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2.5rem;
+}
+
+.gender-input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.labels-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+}
+
+label {
+    font-size: 1.5rem;
+}
+
+.input-field {
+    padding: 1rem;
+    width: 25rem;
+}
+.userGender {
+    font-size: 1.5rem;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+}
+.submit-btn{
+    margin-inline: auto;
+    margin-top: 3rem;
+}
+input[type="submit"] {
+    font-size: 1.8rem;
+    padding: 1rem 2.5rem;
+    border: none;
+    background-color: #4540DB;
+    color: #ffffff;
+    border-radius: 1rem;
+}
+
+@media (max-width:660px){
+    .inputs{
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .gender-input{
+        align-self: flex-start;
+    }
+    form{
+        align-items: center;
+    }
+}

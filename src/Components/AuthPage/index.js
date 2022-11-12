@@ -1,9 +1,15 @@
+import Login from './Login'
+import Header from '../LandingPage/Header';
+
 import React from 'react'
 
-const AuthPage = () => {
+const Auth = () => {
   return (
-    <div>AuthPage</div>
+    <>
+        <Header/>
+        <Login/>
+    </>
   )
 }
 
-export default AuthPage
+export default Auth
