@@ -1,0 +1,182 @@
+
+.section-heading h1 {
+    font-size: 5rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+section.featured-job-section {
+    padding: 7.8rem 0 0 0;
+}
+.freelancers-listing {
+    background: #FFFFFF;
+    box-shadow: 0px 1px 4px rgb(0 0 0 / 25%);
+    border-radius: 20px;
+    padding: 19px 12px 24px 20px;
+}
+.freelancers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10rem 0 5rem 0;
+    flex-wrap: wrap;
+    row-gap: 5rem;
+    column-gap: 4rem;
+}
+
+.profile-name {display: flex;justify-content: flex-start;gap: 2rem;}
+
+.profile-pic {
+    width: 3.3rem;
+}
+
+.profile-pic img {
+    max-width: 100%;
+}
+
+.freelancers-name h3 {
+    font-size: 1.8rem;
+    font-weight: 400;
+}
+
+.freelancers-name p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding-top: 0.2rem;
+}
+.designation {
+    margin-top: 2rem;
+}
+.designation h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
+
+.designation p {
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding: 1rem 0;
+}
+.description{
+    max-width:23rem;
+}
+.month-apply-now {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.month-apply-now p {
+    font-weight: 400;
+    font-size: 1.8rem;
+}
+.month-apply-now p span{
+    font-size: 1.2rem;
+}
+.month-apply-now a{
+    padding: 0.8rem;
+    background: #F9F9FF;
+    border-radius: 10px;
+    text-decoration: none;
+    color: #4943DA;
+    font-size: 1.8rem;
+    font-weight: 400;
+    transition: all 0.3s ease-in-out;
+}
+.month-apply-now a:hover{
+    background-color: #4943DA;
+    color: #FFFFFF;
+}
+.find-more{
+    text-align: center;
+}
+.find-more a {
+    text-decoration: none;
+    font-size: 1.8rem;
+    font-weight: 400;
+    border: 2px solid #4943DA;
+    padding: 1rem;
+    border-radius: 2rem;
+    color: #4943DA;
+    display: block;
+    max-width: 16rem;
+    margin-inline: auto;
+    transition: all 0.3s ease-in-out;
+}
+.find-more a:hover{
+    background-color: #4943DA;
+    color: #FFFFFF;
+}
+.banner {
+    padding: 6.4rem 0 0 0;
+}
+.image-cv {
+    background-color: #4540DB;
+    border-radius:2rem ;
+    overflow: hidden;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 118rem;
+    margin-inline: auto;
+}
+.image {
+    width: 66.6rem;
+    padding: 2rem;
+    position: relative;
+    right: 7rem;
+}
+.image img{
+    max-width: 100%;
+}
+.cv h2 {
+    font-size: 4rem;
+    color: #ffffff;
+    font-weight: 400;
+    /* max-width: 53rem; */
+}
+
+.cv p {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #ffffff;
+}
+
+.cv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 2rem;
+    max-width: 53rem;
+}
+.cv a {
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #000000;
+    padding: 14px 15px 15px 16px;
+    background-color: #ffffff;
+    border-radius: 1rem;
+}
+
+@media (max-width:1023px){
+    .image{
+        display: none;
+    }
+    .image-cv{
+        display: block;
+        padding: 2rem;
+    }
+    .cv{
+        width: unset;
+        text-align: center;
+        margin-inline: auto;
+    }
+    .cv a{
+        margin: auto;
+    }
+}
+@media (max-width:1023px){
+    .cv h2 {
+        font-size: 3rem;
+    }
+}
