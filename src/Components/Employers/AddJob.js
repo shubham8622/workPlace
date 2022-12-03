@@ -1,10 +1,11 @@
-import React, { useEffect, useMemo } from 'react';
+import { useEffect } from "react"
+import Header from "../LandingPage/Header"
+import Footer from "../LandingPage/Footer"
+import JobForm from "./Job/JobForm"
+import { middlewarReq } from "../../store/loginSlice"
 import { useDispatch,useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { middlewarReq } from '../../../store/loginSlice';
-import Header from '../../LandingPage/Header';
-import EmployerForm from './EmployerForm';
-const Profile = () => {
+const AddJob = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const data = useSelector(state=>state.login.loggedIn);
@@ -23,10 +24,11 @@ const Profile = () => {
   },[]);
   return (
     <>
-      <Header/>
-      <EmployerForm/>
+        <Header/>
+        <JobForm/>
+        <Footer/>
     </>
   )
 }
 
-export default Profile
+export default AddJob

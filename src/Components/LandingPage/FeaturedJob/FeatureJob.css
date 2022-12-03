@@ -1,12 +1,21 @@
-
+.dark .section-heading h1{
+    color: #ffffff;
+}
 .section-heading h1 {
     font-size: 5rem;
     font-weight: 500;
     text-align: center;
 }
-
+.dark section.featured-job-section{
+    background-color: #000000;
+}
 section.featured-job-section {
     padding: 7.8rem 0 0 0;
+}
+.dark .freelancers-listing{
+    color: #ffffff;
+    background-color: #000000;
+    border: 2px solid #4540DB;
 }
 .freelancers-listing {
     background: #FFFFFF;

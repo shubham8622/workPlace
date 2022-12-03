@@ -8,12 +8,19 @@
   position: relative;
   top: 10rem;
 }
-
+.dark .job-news{
+  background-color: #000000;
+  box-shadow: 0px 0px 10px #ffffff;
+}
 .content-form {
   padding: 4rem 5.3rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.dark .job-news-content{
+  color: #ffffff;
+
 }
 .job-news-content {
   max-width: 45rem;

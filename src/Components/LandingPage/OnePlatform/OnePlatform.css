@@ -1,9 +1,15 @@
+.dark section.one-platform{
+    background-color:#000000;
+}
 section.one-platform{
     background-color:#F6F7FC;
     padding: 6.3rem 0;
 }
 .heading-center {
     padding: 0 0 5rem 0;
+}
+.dark .heading-center h1{
+    color: #ffffff;
 }
 .heading-center h1 {
     margin: auto;
@@ -24,6 +30,9 @@ section.one-platform{
     flex-wrap: wrap;
     gap: 3rem;
     padding-inline: 1rem;
+}
+.dark .job-listing{
+    border:2px solid #4540DB;
 }
 .job-listing {
     display: flex;
@@ -46,6 +55,9 @@ section.one-platform{
 .job-icon img {
     max-width: 100%;
     padding-top: 1rem;
+}
+.dark .job-title-content{
+    color: #ffffff;
 }
 .job-title-content {
     display: flex;

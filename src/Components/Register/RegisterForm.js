@@ -1,6 +1,47 @@
-import React from "react";
+import React, { useState } from "react";
 
+const initialState = {
+  fName:"",
+  lName:"",
+  who:"",
+  gender:"",
+  eMail:"",
+  password:"",
+}
 const RegisterForm = () => {
+
+  const [form,setForm] = useState(initialState);
+
+  const handleState = (event) =>{
+    let name = event.target.name;
+    let value = event.target.value;
+    setForm({...form,[name]:value});
+  }
+
+  const handleFormSubmission = async (event) =>{
+    event.preventDefault();
+    const {fName,lName,pNumber,gender,eMail,password} = form;
+    if(!(fName,lName,pNumber,gender,eMail,password)){
+      alert("Fill all the fields");
+    }else{
+      const res = await fetch("http://localhost:4000/register",{
+          method:"POST",
+          // mode: 'cors', 
+          headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(form)
+      });
+      const data = await res.json();
+      if(data.res){
+        alert(data.res);
+      }else{
+        alert("You are registered.");
+        setForm(initialState);
+      }
+      document.getElementById("register-form").reset();
+    }
+  }
   return (
     <>
       <section className="register-form-section">
@@ -10,7 +51,7 @@ const RegisterForm = () => {
               <div className="page-heading">
                 <h1>Register Here</h1>
               </div>
-              <form action="">
+              <form id="register-form" className="registerForm" onSubmit={handleFormSubmission}>
                 <div className="inputs">
                   <div className="labels-input">
                     <label htmlFor="firstName">First Name</label>
@@ -20,6 +61,8 @@ const RegisterForm = () => {
                       id="firstName"
                       className="input-field"
                       placeholder="First Name"
+                      onChange={handleState}
+                      value={form.fName}
                     />
                   </div>
                   <div className="labels-input">
@@ -30,19 +73,30 @@ const RegisterForm = () => {
                       id="lastName"
                       className="input-field"
                       placeholder="Last Name"
+                      onChange={handleState}
+                      value={form.lName}
                     />
                   </div>
                 </div>
                 <div className="inputs">
                   <div className="labels-input">
-                    <label htmlFor="phoneNumber">Mobile Number</label>
-                    <input
-                      type="text"
-                      name="pNumber"
-                      id="phoneNumber"
-                      className="input-field"
-                      placeholder="Mobile Number"
-                    />
+                    <label htmlFor="phoneNumber">Employer/Candidate</label>
+                    <div className="userIdentity">
+                      <input
+                          type="radio"
+                          name="who"
+                          value="employer"
+                          onChange={handleState}
+                        />
+                        Employer
+                        <input
+                          type="radio"
+                          name="who"
+                          value="candidate"
+                          onChange={handleState}
+                        />
+                        Candidate
+                      </div>
                   </div>
                   <div className="labels-input gender-input">
                     <label htmlFor="gender">Gender</label>
@@ -51,14 +105,14 @@ const RegisterForm = () => {
                         type="radio"
                         name="gender"
                         value="male"
-                        id="gender"
+                        onChange={handleState}
                       />
                       Male
                       <input
                         type="radio"
                         name="gender"
                         value="female"
-                        id="gender"
+                        onChange={handleState}
                       />
                       Female
                     </div>
@@ -73,16 +127,20 @@ const RegisterForm = () => {
                       id="userEmail"
                       className="input-field"
                       placeholder="Email"
+                      onChange={handleState}
+                      value={form.eMail}
                     />
                   </div>
                   <div className="labels-input">
                     <label htmlFor="password">Password</label>
                     <input
-                      type="text"
+                      type="password"
                       name="password"
                       id="password"
                       className="input-field"
                       placeholder="Password"
+                      onChange={handleState}
+                      value={form.password}
                     />
                   </div>
                 </div>

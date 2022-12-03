@@ -1,0 +1,40 @@
+.candidate-profile-section {
+    height: 100vh;
+    padding-top: 13rem;
+}
+.dark .candidate-profile-section {
+    background-color: #000000;
+}
+form.candidateProfileForm {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+}
+.candidate-field {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.candidate-input {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    max-width: 20rem;
+}
+.candidateProfileForm input {
+    width: 20rem;
+    padding: 0.5rem;
+}
+.candidateProfileSubmit {
+    text-align: center;
+}
+
+@media (max-width:670px){
+    .candidate-field{
+        flex-direction: column;
+    }
+}

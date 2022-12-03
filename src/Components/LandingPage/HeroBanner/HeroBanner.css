@@ -1,3 +1,6 @@
+.dark section.right-job-section{
+    background-color: #000000;
+}
 section.right-job-section {
     padding: 18rem 0 10rem 0;
 }
@@ -11,6 +14,10 @@ section.right-job-section {
     align-items: center;
     flex-direction: column;
     gap: 4rem;
+}
+.dark .hero-banner-heading h1,
+.dark .hero-banner-heading p{
+    color: #ffffff;
 }
 .hero-banner-heading h1{
     font-size: 7rem;
