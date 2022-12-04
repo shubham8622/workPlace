@@ -106,7 +106,7 @@ const EmployerForm = () => {
                         <div className="profile candidate-input">
                             <label htmlFor="image">Profile</label>
                             <input type="file" name="image" id="image" onChange={handleState}/>
-                            <img src = {`${document.location.origin}/${profileData.pImage}`} width="50" height="50"/>
+                            <img src = {`https://workplace-backend.onrender.com/uploads/${profileData.pImage}`} width="50" height="50"/>
                         </div>
                         <div className="company candidate-input">
                             <label htmlFor="current_company">Company name</label>
