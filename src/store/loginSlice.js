@@ -30,7 +30,7 @@ export const {logout} = loginSlice.actions;
 export default loginSlice.reducer;
 
 export const middlewarReq = createAsyncThunk('user/check',async (token)=>{
-    const res = await fetch("http://localhost:4000/verifyUserLogin",{
+    const res = await fetch("https://workplace-backend.onrender.com/verifyUserLogin",{
         method:"POST",
         headers:{
             'Authorization': token,

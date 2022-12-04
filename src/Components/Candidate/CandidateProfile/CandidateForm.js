@@ -5,6 +5,7 @@ const initialState = {
     eMail:"",
     who:"",
     image:"",
+    pImage:"",
     current_company:"",
     primary_role:"",
     total_experience:"",
@@ -16,7 +17,7 @@ const CandidateForm = () => {
     const [profileData,setProfileData]  = useState(initialState);
     const userDetailFun = async () =>{
         let {token} = JSON.parse(localStorage.getItem("userToken"));
-        const userDetail = await fetch("http://localhost:4000/candidateData",{
+        const userDetail = await fetch("https://workplace-backend.onrender.com/candidateData",{
           method:"POST",
           headers:{
             "Content-Type":"application/json"
@@ -26,31 +27,45 @@ const CandidateForm = () => {
         const userData = await userDetail.json();
             if(userData.success === true){
                 let newData = Object.assign(profileData,userData.message);
+                profileData.pImage = userData.message.image;
                 setProfileData(newData)
+                console.log(profileData);
                 // console.log(profileData);
             }
         }
     const handleState = (e) =>{
         let name = e.target.name;
         let value = e.target.value;
-        
-        // console.log(value);
-        setProfileData({...profileData,[name]:value});
+        if(name === "image" || name === "resume"){
+            value = e.target.files[0];
+            setProfileData({...profileData,[name]:value});
+        }else{
+            setProfileData({...profileData,[name]:value});
+        }
     }
     const handleFormSubmission = async (e) =>{
         e.preventDefault();
-        // console.log(profileData);
-        const res = await fetch("http://localhost:4000/candidateDetail",{
+        const formData = new FormData();
+        for ( let key in profileData ) {
+            if(key !== "image" && key !== "resume") formData.append(key, profileData[key]);
+        }
+        formData.append("image",profileData.image);
+        formData.append("resume",profileData.resume);
+        const res = await fetch("https://workplace-backend.onrender.com/candidateDetail",{
             method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(profileData)
+            // headers:{
+            //     "Content-Type":"application/json"
+            // },
+            body:formData
         });
 
         const response = await res.json();
+        console.log(response)
         if(response.success === true){
             alert(response.message)
+            let newData = Object.assign(profileData,response.userInfo);
+            profileData.pImage = response.userInfo.image;
+            setProfileData(newData);
         }else{
             alert(response.message)
         }
@@ -67,7 +82,7 @@ const CandidateForm = () => {
               <div className="page-heading">
                 <h1>Candidate Profile</h1>
               </div>
-              <form className = "candidateProfileForm" onSubmit={handleFormSubmission}>
+              <form className = "candidateProfileForm" onSubmit={handleFormSubmission} encType="multipart/form-data">
                     <div className="profile-company candidate-field">
                         <div className="profile candidate-input">
                             <label htmlFor="name">Name</label>
@@ -91,7 +106,8 @@ const CandidateForm = () => {
                     <div className="profile-company candidate-field">
                         <div className="profile candidate-input">
                             <label htmlFor="image">Profile</label>
-                            <input type="file" name="image" id="image" value="" onChange={handleState}/>
+                            <input type="file" name="image" id="image" onChange={handleState}/>
+                            <img src = {`https://workplace-backend.onrender.com/uploads/${profileData.pImage}`} width="50" height="50"/>
                         </div>
                         <div className="company candidate-input">
                             <label htmlFor="current_company">Current company</label>
@@ -115,7 +131,8 @@ const CandidateForm = () => {
                         </div>
                         <div className="company candidate-input">
                             <label htmlFor="resume">Resume</label>
-                            <input type="file" name="resume" id="resume" value="" onChange={handleState}/>
+                            <input type="file" name="resume" id="resume" onChange={handleState}/>
+                            <a href={`https://workplace-backend.onrender.com/uploads/${profileData.resume}`} target="_blank">Download resume</a>
                         </div>
                     </div>
                     <div className="candidateProfileSubmit">

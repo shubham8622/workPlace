@@ -9,6 +9,7 @@ const EmployerForm = () => {
         eMail:"",
         who:"",
         image:"",
+        pImage:"",
         company:"",
         phone_number:"",
         industry:"",
@@ -17,7 +18,7 @@ const EmployerForm = () => {
     const [profileData,setProfileData]  = useState(initialState);
     const userDetailFun = async () =>{
         let {token} = JSON.parse(localStorage.getItem("userToken"));
-        const userDetail = await fetch("http://localhost:4000/candidateData",{
+        const userDetail = await fetch("https://workplace-backend.onrender.com/candidateData",{
           method:"POST",
           headers:{
             "Content-Type":"application/json"
@@ -28,30 +29,48 @@ const EmployerForm = () => {
             if(userData.success === true){
                 let newData = Object.assign(profileData,userData.message);
                 setProfileData(newData)
+                profileData.pImage = userData.message.image;
                 console.log(profileData);
             }
         }
     const handleState = (e) =>{
         let name = e.target.name;
         let value = e.target.value;
-
-        setProfileData({...profileData,[name]:value});
+        if(name === "image"){
+            value = e.target.files[0];
+            setProfileData({...profileData,[name]:value});
+        }else{
+            setProfileData({...profileData,[name]:value});
+        }
     }
     const handleFormSubmission = async (e) =>{
         e.preventDefault();
-        const res = await fetch("http://localhost:4000/employerDetail",{
+        const formData = new FormData();
+        for ( let key in profileData ) {
+            if(key !== "image") formData.append(key, profileData[key]);
+        }
+        formData.append("image",profileData.image);
+        const res = await fetch("https://workplace-backend.onrender.com/employerDetail",{
             method:"POST",
-            headers:{
-                "Content-Type":"application/json"
-            },
-            body:JSON.stringify(profileData)
+            // headers:{
+            //     "Content-Type":"application/json"
+            // },
+            body:formData
         });
 
         const response = await res.json();
-        console.log(response);
+        if(response.success === true){
+            alert(response.message)
+            let newData = Object.assign(profileData,response.userInfo);
+            setProfileData(newData)
+            profileData.pImage = response.userInfo.image;
+            console.log(profileData);
+        }else{
+            alert(response.message)
+        }
     }
     useEffect(()=>{
-        userDetailFun()
+        userDetailFun();
     },[]);
   return (
     <>
@@ -62,7 +81,7 @@ const EmployerForm = () => {
               <div className="page-heading">
                 <h1>Employer Profile</h1>
               </div>
-              <form className = "candidateProfileForm" onSubmit={handleFormSubmission}>
+              <form className = "candidateProfileForm" onSubmit={handleFormSubmission} encType="multipart/form-data">
                     <div className="profile-company candidate-field">
                         <div className="profile candidate-input">
                             <label htmlFor="name">Name</label>
@@ -86,7 +105,8 @@ const EmployerForm = () => {
                     <div className="profile-company candidate-field">
                         <div className="profile candidate-input">
                             <label htmlFor="image">Profile</label>
-                            <input type="file" name="image" id="image" value="" onChange={handleState}/>
+                            <input type="file" name="image" id="image" onChange={handleState}/>
+                            <img src = {`${document.location.origin}/${profileData.pImage}`} width="50" height="50"/>
                         </div>
                         <div className="company candidate-input">
                             <label htmlFor="current_company">Company name</label>
@@ -113,7 +133,7 @@ const EmployerForm = () => {
                     <div className="candidateProfileSubmit">
                         <input type="submit" value="Submit" />
                     </div>
-              </form>
+              </form>  
             </div>
           </div>
         </div>
