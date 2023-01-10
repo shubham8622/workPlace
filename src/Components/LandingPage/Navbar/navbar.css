@@ -33,6 +33,7 @@ nav {
     align-items: center;
     list-style: none;
     gap: 4rem;
+    margin-left: 9rem;
 }
 .dark .nav-links{
     color: #ffffff;
