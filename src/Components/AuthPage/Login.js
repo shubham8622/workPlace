@@ -23,7 +23,7 @@ const Login = (props) => {
     if(!(email,password)){
       alert("Fill all the fields.")
     }else{
-      const res = await fetch("https://workplace-backend.onrender.com/login",{
+      const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/login",{
         method:"POST",
         headers:{
           "Content-Type":"application/json"

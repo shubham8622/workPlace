@@ -4,7 +4,7 @@ const JobListing = () => {
     const [allJobs,setJobs] = useState();
     const fetchAllJobs = async () =>{
         let {token} = JSON.parse(localStorage.getItem("userToken"));
-        const res = await fetch("https://workplace-backend.onrender.com/jobs",{
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/jobs",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"
@@ -20,7 +20,7 @@ const JobListing = () => {
         // console.log(allJobs);
     }
     const deleteJob = async (id) =>{
-        const res = await fetch("https://workplace-backend.onrender.com/deleteJob",{
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/deleteJob",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

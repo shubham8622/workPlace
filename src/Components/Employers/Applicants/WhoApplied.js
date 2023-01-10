@@ -4,7 +4,7 @@ const WhoApplied = () => {
     const [appliedCandidateForJob,setAppliedCandidate] = useState();
 
     const fetchAppliedCandidate = async () =>{
-        const res = await fetch("https://workplace-backend.onrender.com/fetchAllapply");
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/fetchAllapply");
         const data = await res.json();
         if(data.success === true){
             setAppliedCandidate(data.message);
@@ -15,7 +15,7 @@ const WhoApplied = () => {
         }
     }
     const contact = async (email,option,jobName,companyName) =>{
-            const res = await fetch("https://workplace-backend.onrender.com/sendEmail",{
+            const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/sendEmail",{
                 method:"POST",
                 headers:{
                     "Content-type":"application/json"
@@ -48,7 +48,7 @@ const WhoApplied = () => {
                                         <p>Candidate email id <span>{j.eMail}</span></p>
                                         <p>Candidate previous company <span>{j.current_company}</span></p>
                                         <p>Candidate current CTC <span>{j.current_CTC}</span></p>
-                                        <p>Candidate resume <a href ={`https://workplace-backend.onrender.com/uploads/${j.resume}`} target="_blank">Download</a></p>
+                                        <p>Candidate resume <a href ={`https://workplace-backend-production-7a56.up.railway.app/uploads/${j.resume}`} target="_blank">Download</a></p>
                                     </div>
                                     <div className="action-btn">
                                     <button onClick={()=>contact(j.eMail,"accept",j.job_name,j.companyToApply)}>Accept</button>

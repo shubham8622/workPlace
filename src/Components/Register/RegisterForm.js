@@ -24,7 +24,7 @@ const RegisterForm = () => {
     if(!(fName,lName,pNumber,gender,eMail,password)){
       alert("Fill all the fields");
     }else{
-      const res = await fetch("https://workplace-backend.onrender.com/register",{
+      const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/register",{
           method:"POST",
           // mode: 'cors', 
           headers:{

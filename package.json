@@ -2,7 +2,7 @@
   "name": "work-place",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://workplace-backend.onrender.com/",
+  "proxy": "https://workplace-backend-production-7a56.up.railway.app",
   "dependencies": {
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",

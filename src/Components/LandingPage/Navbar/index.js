@@ -66,7 +66,7 @@ const Navbar = () => {
                   <li className="nav-items"><Link to="/" className="nav-links">Home</Link></li>
                   <li className="nav-items"><Link to="/candidate/auth" className="nav-links">Find Jobs</Link></li>
                   <li className="nav-items"><Link to="/employer/auth" className="nav-links">Find candidate</Link></li>
-                  <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li>
+                  {/* <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li> */}
                 </>
                 :(data.who === "employer")?
                 <>
@@ -75,14 +75,14 @@ const Navbar = () => {
                   <li className="nav-items"><Link to="/employer/addjob" className="nav-links">Add Job</Link></li>
                   <li className="nav-items"><Link to="/employer/applicants" className="nav-links">Who Applied</Link></li>
                   <li className="nav-items"><Link to="/employer/profile" className="nav-links">Profile</Link></li>
-                  <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li>
+                  {/* <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li> */}
                 </>
                 :
                 <>
                   <li className="nav-items"><Link to="/" className="nav-links">Home</Link></li>
                   <li className="nav-items"><Link to="/candidate/jobs" className="nav-links">Find Jobs</Link></li>
                   <li className="nav-items"><Link to="/candidate/profile" className="nav-links">Profile</Link></li>
-                  <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li>
+                  {/* <li className="nav-items"><Link to="/articles" className="nav-links">Articles</Link></li> */}
                 </>
             }
             </ul>

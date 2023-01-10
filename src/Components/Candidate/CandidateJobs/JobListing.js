@@ -6,7 +6,7 @@ const JobListing = () => {
     const [allJobs,setJobs] = useState();
     const fetchAllJobs = async () =>{
         let {token} = (t !== null)?JSON.parse(localStorage.getItem("userToken")):"";
-        const res = await fetch("https://workplace-backend.onrender.com/allJobs");
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/allJobs");
         const jobs = await res.json(); 
         if(jobs.success === true){
             setJobs(jobs.message);
@@ -16,7 +16,7 @@ const JobListing = () => {
     }
 
     const applyFunction = async (jobId,employerId,userId) =>{
-        const res = await fetch("https://workplace-backend.onrender.com/apply",{
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/apply",{
             method:"POST",
             headers:{
                 "Content-Type":"application/json"

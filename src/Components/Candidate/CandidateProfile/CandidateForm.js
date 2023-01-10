@@ -17,7 +17,7 @@ const CandidateForm = () => {
     const [profileData,setProfileData]  = useState(initialState);
     const userDetailFun = async () =>{
         let {token} = JSON.parse(localStorage.getItem("userToken"));
-        const userDetail = await fetch("https://workplace-backend.onrender.com/candidateData",{
+        const userDetail = await fetch("https://workplace-backend-production-7a56.up.railway.app/candidateData",{
           method:"POST",
           headers:{
             "Content-Type":"application/json"
@@ -51,7 +51,7 @@ const CandidateForm = () => {
         }
         formData.append("image",profileData.image);
         formData.append("resume",profileData.resume);
-        const res = await fetch("https://workplace-backend.onrender.com/candidateDetail",{
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/candidateDetail",{
             method:"POST",
             // headers:{
             //     "Content-Type":"application/json"
@@ -107,7 +107,7 @@ const CandidateForm = () => {
                         <div className="profile candidate-input">
                             <label htmlFor="image">Profile</label>
                             <input type="file" name="image" id="image" onChange={handleState}/>
-                            <img src = {`https://workplace-backend.onrender.com/uploads/${profileData.pImage}`} width="50" height="50"/>
+                            <img src = {`https://workplace-backend-production-7a56.up.railway.app/uploads/${profileData.pImage}`} width="50" height="50"/>
                         </div>
                         <div className="company candidate-input">
                             <label htmlFor="current_company">Current company</label>
@@ -132,7 +132,7 @@ const CandidateForm = () => {
                         <div className="company candidate-input">
                             <label htmlFor="resume">Resume</label>
                             <input type="file" name="resume" id="resume" onChange={handleState}/>
-                            <a href={`https://workplace-backend.onrender.com/uploads/${profileData.resume}`} target="_blank">Download resume</a>
+                            <a href={`https://workplace-backend-production-7a56.up.railway.app/uploads/${profileData.resume}`} target="_blank">Download resume</a>
                         </div>
                     </div>
                     <div className="candidateProfileSubmit">

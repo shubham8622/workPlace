@@ -22,7 +22,7 @@ const JobForm = () => {
   const handleFormSubmission = async (e) => {
     e.preventDefault();
     let {token} = JSON.parse(localStorage.getItem("userToken"));
-    const res = await fetch("https://workplace-backend.onrender.com/addjob",{
+    const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/addjob",{
           method:"POST",
           headers:{
             "Content-Type":"application/json"
