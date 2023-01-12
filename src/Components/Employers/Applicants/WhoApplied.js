@@ -1,11 +1,20 @@
+import { compose } from '@mui/system';
 import React, { useEffect,useState } from 'react'
 
 const WhoApplied = () => {
     const [appliedCandidateForJob,setAppliedCandidate] = useState();
-
+    let userId = JSON.parse(localStorage.getItem("userToken"));
+    let Etoken = userId.token;
     const fetchAppliedCandidate = async () =>{
-        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/fetchAllapply");
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/fetchAllapply",{
+            method:"POST",
+                headers:{
+                    "Content-type":"application/json"
+                },
+                body:JSON.stringify({Etoken})
+        });
         const data = await res.json();
+        console.log(data);
         if(data.success === true){
             setAppliedCandidate(data.message);
             console.log(data);

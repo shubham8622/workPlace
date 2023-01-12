@@ -18,7 +18,7 @@ const EmployerForm = () => {
     const [profileData,setProfileData]  = useState(initialState);
     const userDetailFun = async () =>{
         let {token} = JSON.parse(localStorage.getItem("userToken"));
-        const userDetail = await fetch("http:localhost:4000/candidateData",{
+        const userDetail = await fetch("https://workplace-backend-production-7a56.up.railway.app/candidateData",{
           method:"POST",
           headers:{
             "Content-Type":"application/json"
@@ -50,7 +50,7 @@ const EmployerForm = () => {
             if(key !== "image") formData.append(key, profileData[key]);
         }
         formData.append("image",profileData.image);
-        const res = await fetch("http:localhost:4000/employerDetail",{
+        const res = await fetch("https://workplace-backend-production-7a56.up.railway.app/employerDetail",{
             method:"POST",
             // headers:{
             //     "Content-Type":"application/json"
@@ -106,7 +106,7 @@ const EmployerForm = () => {
                         <div className="profile candidate-input">
                             <label htmlFor="image">Profile</label>
                             <input type="file" name="image" id="image" onChange={handleState}/>
-                            <img src = {`http:localhost:4000/uploads/${profileData.pImage}`} width="50" height="50"/>
+                            <img src = {`https://workplace-backend-production-7a56.up.railway.app/uploads/${profileData.pImage}`} width="50" height="50"/>
                         </div>
                         <div className="company candidate-input">
                             <label htmlFor="current_company">Company name</label>
